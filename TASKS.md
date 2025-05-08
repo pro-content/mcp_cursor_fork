@@ -107,27 +107,40 @@
 
 ## 10. Integrate MCP Server with Cursor
 
-- [ ] **Configure MCP Server in Cursor:**
+- [ ] Update Cursor MCP Configuration:
 
-  - Open Cursor.
-  - Navigate to `Settings` > `Features` > `MCP`.
-  - Click on `+ Add New MCP Server`.
-  - In the configuration window:
-    - **Name:** `filesystem`
-    - **Type:** `command`
-    - **Command:** `/usr/bin/python3`
-    - **Arguments:** `["/home/yourusername/path/to/server.py"]`
-    - **Environment Variables:**
-      - `PYTHONUNBUFFERED`: `1`
-      - `LOG_LEVEL`: `DEBUG`
-  - Save the configuration.
+  - Edit `~/.cursor/mcp.json` to include:
 
-- [ ] **Verify Integration:**
+    ```json
+    {
+      "mcpServers": {
+        "filesystem": {
+          "command": "/usr/bin/python3",
+          "args": [
+            "/home/yourusername/path/to/server.py"
+          ],
+          "env": {
+            "PYTHONUNBUFFERED": "1",
+            "LOG_LEVEL": "DEBUG"
+          }
+        }
+      }
+    }
+    ```
 
-  - Restart Cursor to apply the new configuration.
-  - Open the MCP panel to ensure the `filesystem` server is listed.
-  - Test the server functionalities through Cursor's interface.
-  - Check the logs to ensure that debug messages are being recorded as expected.
+    **Notes:**
+    - Replace `/usr/bin/python3` with the path to your Python interpreter.
+    - Replace `/home/yourusername/path/to/server.py` with the absolute path to your MCP server script.
+    - The `PYTHONUNBUFFERED` environment variable ensures that output is unbuffered, which is helpful for real-time logging.
+    - The `LOG_LEVEL` environment variable sets the logging level to `DEBUG`.
 
-**Note:** Replace `/usr/bin/python3` and `/home/yourusername/path/to/server.py` with the appropriate paths on your system.
+    This configuration tells Cursor to launch your MCP server using the STDIO transport, which is suitable for local integrations and command-line tools.
+
+- [ ] Restart Cursor to apply the new configuration.
+
+- [ ] Verify that your MCP server starts correctly and that Cursor can communicate with it.
+
+- [ ] Check the logs to ensure that debug messages are being recorded as expected.
+
+**Note:** For project-specific configurations, you can create a `.cursor/mcp.json` file within your project directory. This allows you to define MCP servers that are only available within that specific project.
 
