@@ -2,36 +2,36 @@
 
 ## 1. Environment Setup
 
-- [ ] Install Python 3.10 or higher.
-- [ ] Set up a virtual environment using `uv` or `venv`.
-- [ ] Install the MCP Python SDK:
+- [x] Install Python 3.10 or higher.
+- [x] Set up a virtual environment using `uv` or `venv`.
+- [x] Install the MCP Python SDK:
   ```bash
   uv add "mcp[cli]"
   ```
 
 ## 2. Project Initialization
 
-- [ ] Create the project directory structure.
-- [ ] Initialize a Git repository.
-- [ ] Set up `.gitignore` to exclude unnecessary files.
+- [x] Create the project directory structure.
+- [x] Initialize a Git repository.
+- [x] Set up `.gitignore` to exclude unnecessary files.
 
 ## 3. Basic MCP Server Implementation
 
-- [ ] Create a Python script (e.g., `server.py`) and initialize the `FastMCP` server.
-- [ ] Define a simple tool (e.g., addition function) to test server functionality.
-- [ ] Run the server and verify it starts without errors.
+- [x] Create a Python script (e.g., `server.py`) and initialize the `FastMCP` server.
+- [x] Define a simple tool (e.g., addition function) to test server functionality.
+- [x] Run the server and verify it starts without errors.
 
 ## 4. Filesystem Tools Development
 
-- [ ] Implement a tool to read file contents given a relative path.
-- [ ] Implement a tool to list directory contents.
-- [ ] Implement a tool to search files using regex patterns.
-- [ ] Implement a resource to monitor file changes (optional).
+- [x] Implement a tool to read file contents given a relative path.
+- [x] Implement a tool to list directory contents.
+- [x] Implement a tool to search files using regex patterns.
+- [x] Implement a resource to monitor file changes (optional).
 
 ## 5. Security Enhancements
 
-- [ ] Implement directory access restrictions to prevent traversal attacks.
-- [ ] Integrate `.gitignore` pattern recognition to exclude specific files.
+- [x] Implement directory access restrictions to prevent traversal attacks.
+- [x] Integrate `.gitignore` pattern recognition to exclude specific files.
 - [ ] Set up API key authentication for accessing tools and resources.
 
 ## 6. Client Integration
@@ -42,15 +42,15 @@
 
 ## 7. Testing and Validation
 
-- [ ] Write unit tests for each tool and resource.
+- [x] Write unit tests for each tool and resource.
 - [ ] Perform integration testing with clients.
 - [ ] Validate security measures against potential threats.
 
 ## 8. Documentation
 
-- [ ] Document the setup process and usage instructions.
-- [ ] Provide examples for each tool and resource.
-- [ ] Include security guidelines and best practices.
+- [x] Document the setup process and usage instructions.
+- [x] Provide examples for each tool and resource.
+- [x] Include security guidelines and best practices.
 
 ## 9. Integrate MCP Server with Cascade
 
@@ -75,7 +75,7 @@
     }
     ```
 
-- [ ] Implement extensive debug logging in `server.py`:
+- [x] Implement extensive debug logging in `server.py`:
 
   ```python
   import logging
@@ -107,9 +107,9 @@
 
 ## 10. Integrate MCP Server with Cursor
 
-- [ ] Update Cursor MCP Configuration:
+- [x] Update Cursor MCP Configuration:
 
-  - Edit `~/.cursor/mcp.json` to include:
+  - Created `.cursor/mcp.json` to include:
 
     ```json
     {
@@ -117,7 +117,7 @@
         "filesystem": {
           "command": "/usr/bin/python3",
           "args": [
-            "/home/yourusername/path/to/server.py"
+            "/Users/niladribose/code/CONTENT/WINDSURF_VS_CURSOR/MCP_SERVER/mcp_cursor/mcp_cursor_fork/src/filesystem_server/server.py"
           ],
           "env": {
             "PYTHONUNBUFFERED": "1",
@@ -128,19 +128,22 @@
     }
     ```
 
-    **Notes:**
-    - Replace `/usr/bin/python3` with the path to your Python interpreter.
-    - Replace `/home/yourusername/path/to/server.py` with the absolute path to your MCP server script.
-    - The `PYTHONUNBUFFERED` environment variable ensures that output is unbuffered, which is helpful for real-time logging.
-    - The `LOG_LEVEL` environment variable sets the logging level to `DEBUG`.
+- [x] Fixed MCP server compatibility issues with latest MCP SDK.
 
-    This configuration tells Cursor to launch your MCP server using the STDIO transport, which is suitable for local integrations and command-line tools.
+- [x] Verified that the server starts and works correctly.
+
+- [x] Fixed "Client closed" error by improving resource handler implementation.
 
 - [ ] Restart Cursor to apply the new configuration.
 
-- [ ] Verify that your MCP server starts correctly and that Cursor can communicate with it.
-
 - [ ] Check the logs to ensure that debug messages are being recorded as expected.
 
-**Note:** For project-specific configurations, you can create a `.cursor/mcp.json` file within your project directory. This allows you to define MCP servers that are only available within that specific project.
+## Discovered During Work
+
+- [x] Add proper error handling for binary files in file reading.
+- [x] Fixed resource URI syntax to use the required format (resource://).
+- [x] Updated server implementation to work with the latest MCP SDK.
+- [x] Converted `monitor_file_changes` function into a proper resource streaming handler.
+- [x] Fixed asyncio event loop handling to avoid conflicts.
+- [ ] Consider adding a configuration file to make workspace root configurable.
 

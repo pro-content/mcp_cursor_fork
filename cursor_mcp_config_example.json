@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "/usr/bin/python3",
+      "args": [
+        "/Users/niladribose/code/CONTENT/WINDSURF_VS_CURSOR/MCP_SERVER/mcp_cursor/mcp_cursor_fork/src/filesystem_server/server.py"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "LOG_LEVEL": "DEBUG"
+      }
+    }
+  }
+}
+
+/*
+Instructions:
+1. Copy this file to ~/.cursor/mcp.json
+2. Replace the paths with your actual paths:
+   - Replace "/usr/bin/python3" with the path to your Python interpreter (use "which python3" to find it)
+   - Replace the server.py path with the absolute path to your MCP server script
+3. Restart Cursor to apply the configuration
+*/ 

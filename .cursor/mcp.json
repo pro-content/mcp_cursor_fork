@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "${workspaceFolder}/mcp_venv/bin/python",
+      "args": [
+        "${workspaceFolder}/src/filesystem_server/server.py"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "LOG_LEVEL": "DEBUG"
+      }
+    },
+    "minimal-test": {
+      "command": "${workspaceFolder}/mcp_venv/bin/python",
+      "args": [
+        "${workspaceFolder}/minimal_server.py"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "LOG_LEVEL": "DEBUG"
+      }
+    }
+  }
+} 
